@@ -1,0 +1,15 @@
+<div style="height: 50px; margin-top: 10px; display: inline;">
+  <mat-chip-list
+    class="example-chip"
+    cdkDropList 
+    cdkDropListOrientation="horizontal">
+    <mat-chip
+      class="example-box"
+      cdkDrag
+      *ngFor="let chip of chips">
+      {{chip}}
+    </mat-chip>
+  </mat-chip-list>
+</div>
+
+

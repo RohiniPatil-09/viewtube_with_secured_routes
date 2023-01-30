@@ -1,0 +1,15 @@
+<form style="text-align: center; margin-top: 10%;" [formGroup]="loginForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input type="text" matInput required formControlName="username">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput required formControlName="password">
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="signUp()">Sign Up</button>
+    <div style="width: 50px; display: inline-block;"></div>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+</form>

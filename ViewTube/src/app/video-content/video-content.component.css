@@ -1,0 +1,11 @@
+.cardStyle{
+    max-width: 300px;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+}
+.cardImg{
+    max-width: 295px;
+    object-fit: fill;
+    display: contain;
+}

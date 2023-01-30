@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" matTooltip="Menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span><a style="text-decoration: none;color: aliceblue;" href="">ViewTube</a></span>
+
+    <span class="example-spacer"></span>
+    <input type="text">
+    <button mat-icon-button>
+      <mat-icon>search</mat-icon>
+    </button>
+    <button style="padding-top: 5px;" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" matTooltip="Social">
+      <a style="text-decoration: none; color: white;" routerLink="login"><mat-icon>group_add</mat-icon></a>
+    </button> 
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" matTooltip="Share">
+      <mat-icon>share</mat-icon>
+    </button>
+
+    <button style="padding-top: 5px;" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" matTooltip="Upload">
+      <a style="text-decoration: none; color: white;" routerLink="upload"><mat-icon>cloud_upload</mat-icon></a>
+    </button>
+
+    <button style="padding-top: 5px;" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" matTooltip="Live">
+      <a style="text-decoration: none; color: white;" routerLink="livestream"><mat-icon>live_tv</mat-icon></a>
+    </button>
+
+</mat-toolbar>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <a mat-button href="#" target="_blank" style="width: 160px;text-align: left; height: 40px;"><mat-icon>home</mat-icon> Home</a>
+        <br>
+        <a mat-button href="#" target="_blank" style="width: 160px;text-align: left; height: 40px;"><mat-icon>explore</mat-icon> Explore</a>
+        <br>
+        <a mat-button href="#" target="_blank" style="width: 160px;text-align: left; height: 40px;"><mat-icon>theaters</mat-icon> Subscriptions</a>
+        <br>
+        <a mat-button href="#" target="_blank" style="width: 160px;text-align: left; height: 40px;"><mat-icon>library_music</mat-icon> Library</a>
+        <br>
+        <a mat-button href="#" target="_blank" style="width: 160px;text-align: left; height: 40px;"><mat-icon>history</mat-icon> History</a>
+        <br>
+        <br>
+        <button style="margin-left: 25px;" mat-button color="accent"><mat-icon>person_pin</mat-icon>    Sign In</button>
+    </mat-drawer>
+    <mat-drawer-content>
+      <!-- <app-video-content></app-video-content> -->
+      <!-- <app-studio-upload></app-studio-upload> -->
+      <!-- <app-studio-livestream></app-studio-livestream> -->
+      <!-- <app-login></app-login> -->
+      <router-outlet></router-outlet>
+      
+    </mat-drawer-content>
+</mat-drawer-container>
+  
+
+<!-- <app-chips-bar></app-chips-bar> -->

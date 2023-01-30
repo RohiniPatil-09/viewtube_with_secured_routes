@@ -1,0 +1,91 @@
+<form [formGroup]="liveStreamForm" (ngSubmit)="confirm()" style="margin: 50px;">
+    <mat-form-field appearance="outline" style="width: 235px;">
+        <mat-label>Event Title</mat-label>
+        <input matInput type="text" formControlName="title">
+    </mat-form-field>
+    <span *ngIf="title?.touched && title?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Event Start Date</mat-label>
+        <input matInput type="text" formControlName="startDate" [matDatepicker]="startDatePicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+    <span *ngIf="startDate?.touched && startDate?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+    <br>
+
+    <mat-form-field appearance="outline" style="width: 235px;">
+        <mat-label>Event Start Time</mat-label>
+        <input matInput type="text" formControlName="startTime" [matAutocomplete]="startTimeTable">
+        <mat-autocomplete autoActiveFirstOption #startTimeTable="matAutocomplete">
+            <mat-option *ngFor="let option of timeTable" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+    </mat-form-field>
+    <span *ngIf="startTime?.touched && startTime?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+    <br>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Event End Date</mat-label>
+        <input matInput type="text" formControlName="endDate" [matDatepicker]="endDatePicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+    <span *ngIf="endDate?.touched && endDate?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+    <br>
+
+    <mat-form-field appearance="outline" style="width: 235px;">
+        <mat-label>Event End Time</mat-label>
+        <input matInput type="text" formControlName="endTime" [matAutocomplete]="endTimeTable">
+        <mat-autocomplete autoActiveFirstOption #endTimeTable="matAutocomplete">
+            <mat-option *ngFor="let option of timeTable" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+    </mat-form-field>
+    <span *ngIf="endTime?.touched && endTime?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+   <br>
+
+   <mat-form-field style="width: 235px;" appearance="fill">
+    <mat-label>Event Details</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..." formControlName="eventDetails"></textarea>
+   </mat-form-field>
+   <br>
+
+
+   <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Guest List</mat-label>
+    <mat-chip-list #chipList aria-label="Guest List" multiple>
+      <mat-chip
+          *ngFor="let keyword of keywords"
+          [selected]="keyword"
+          [value]="keyword"
+          (removed)="removeKeyword()">
+        {{keyword}}
+      </mat-chip>
+      <input formControlName="guestEmail"
+        placeholder="New guest email..."
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addKeywordFromInput($event)">
+    </mat-chip-list>
+  </mat-form-field>
+    <span *ngIf="guestEmail?.invalid" style="color: red;">
+        Invalid Field
+    </span>
+    <br>
+    <button mat-raised-button [disabled]="liveStreamForm.invalid">Schedule Event</button>
+    
+</form>

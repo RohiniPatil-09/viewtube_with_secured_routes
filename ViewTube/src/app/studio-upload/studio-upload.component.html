@@ -1,0 +1,122 @@
+<div style="margin: 50px;">
+    <mat-form-field appearance="outline">
+        <mat-label>Video URL</mat-label>
+        <input matInput required placeholder="https://www.youtube.com/embed/1ArVtCQqQRE">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Video Title</mat-label>
+        <input matInput required maxlength="120">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Video Description</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Channel Title</mat-label>
+        <input matInput required>
+    </mat-form-field>    
+</div>
+    
+<div style="margin: 50px;">
+    <label id="example-radio-group-label">Audience Type</label>
+    <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group">
+    <mat-radio-button class="example-radio-button" *ngFor="let item of audienceType" [value]="item">
+        {{item}}
+    </mat-radio-button>
+    </mat-radio-group>
+</div>
+<div style="margin: 50px;">
+    <label id="example-radio-group-label">Age Restriction</label>
+    <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group">
+    <mat-radio-button class="example-radio-button" *ngFor="let item of ageRestriction" [value]="item">
+        {{item}}
+    </mat-radio-button>
+    </mat-radio-group>
+</div>
+<div style="margin: 50px;">
+    <mat-form-field class="example-chip-list" appearance="fill">
+        <mat-label>Video Tags</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let tag of _tags"
+            (removed)="remove(tag)">
+            {{tag}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input
+            placeholder="Video tags..."
+            #videoTag
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)" #tagData>
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of filtered_tags | async" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+      
+</div>
+<div style="margin: 50px;">
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>License</mat-label>
+          <input type="text" placeholder="Pick one" matInput [matAutocomplete]="auto1" #licenseType>
+          <mat-autocomplete #auto1="matAutocomplete">
+            <mat-option *ngFor="let option of licenseOptions" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>
+<div style="margin: 50px;">
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Distribution </mat-label>
+          <input type="text" matInput [matAutocomplete]="auto2" #distType>
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let option of distributionOptions" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+      
+</div>
+
+<div style="margin: 50px;">
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Video Category </mat-label>
+          <input type="text" matInput [matAutocomplete]="auto3" #videoCat>
+          <mat-autocomplete #auto3="matAutocomplete">
+            <mat-option *ngFor="let option of videoCategories" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>   
+</div>
+<div style="margin: 50px;">
+  <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Visibility </mat-label>
+        <input type="text" matInput [matAutocomplete]="auto4" #visibility>
+        <mat-autocomplete #auto4="matAutocomplete">
+          <mat-option *ngFor="let option of visibilityOptions" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>   
+</div>
+
+<button mat-raised-button color="primary" (click)="submit()">Submit</button>

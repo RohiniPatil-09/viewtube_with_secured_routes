@@ -1,0 +1,15 @@
+<app-chips-bar></app-chips-bar> 
+<mat-card class="cardStyle" *ngFor="let video of videos" matRipple
+[matRippleCentered]="false"
+[matRippleUnbounded]="false"
+[matRippleRadius]="300">
+    <img src= {{video.snippet.thumbnails.medium.url}} alt="Photo of a Shiba Inu" class="cardImg">
+    <mat-card-content>
+      <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+        {{video.snippet.description}}
+      </p>
+    </mat-card-content>
+</mat-card>
+<!-- <button (click)="getVideoRawData()">Get raw data</button> -->
+
+<!-- <div *ngFor="let video of videos">{{video.snippet.description}}</div> -->
